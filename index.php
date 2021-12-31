@@ -1,3 +1,7 @@
+<?php
+ require_once "Crepe.php";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,6 +11,20 @@
   <title>Faire des crêpes</title>
 </head>
 <body>
-  
+  <?php
+  $newCrepe = new Crepe(100, 250);
+  var_dump($newCrepe);
+
+  ?>
+  <ul>
+  <?php
+  foreach ($newCrepe->displayRecipe() as $value){
+    ?>
+    <li><?= $value; ?></li>
+    <?php
+  }
+  ?>
+  </ul>
+
 </body>
 </html>

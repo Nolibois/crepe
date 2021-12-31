@@ -2,27 +2,38 @@
 
 class Crepe
 {
-  private $sugar;
-  private $flour;
+  private int $sugar;  // Qantity "gr"
+  private int $flour;  // Qantity "gr"
 
-  function __contruct($sugar, $flour){
+  public function __contruct(int $sugar, int $flour){
+    $this->setSugar($sugar);
     $this->getSugar();
+    $this->setFlour($flour);
     $this->getFlour();
   }
 
-  function getSugar(){
+  private function getSugar(){
     return $this->sugar;
   }
 
-  function setSugar( $ingredient1 ){
-    $this->sugar = $ingredient1;
+  private function setSugar($sugar){
+    $this->sugar = $sugar;
   }
 
-  function getflour(){
+  private function getFlour(){
     return $this->flour;
   }
 
-  function setflour( $ingredient2 ){
-    $this->flour = $ingredient2;
+  private function setFlour($flour){
+    $this->flour = $flour;
+  }
+
+  public function displayRecipe(){
+    $recipe = [
+      "1" => "Mélanger le sucre et la farine",
+      "2" => "Faire des crêpes"
+    ];
+
+    return $recipe;
   }
 }
