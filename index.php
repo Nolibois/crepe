@@ -11,11 +11,23 @@
   <title>Faire des crêpes</title>
 </head>
 <body>
+  <h1>Recette des meilleures crêpes</h1>
   <?php
-  $newCrepe = new Crepe(100, 250);
-  var_dump($newCrepe);
+  $newCrepe = new Crepe(2, 250, 4, 50, 1, 50);
 
   ?>
+  <h2>Liste des ingrédients:</h2>
+  <ul>
+  <?php
+  foreach ($newCrepe->displayIngredients() as $value){
+    ?>
+    <li><?= $value; ?></li>
+    <?php
+  }
+  ?>
+  </ul>
+
+  <h2>Etapes:</h2>
   <ul>
   <?php
   foreach ($newCrepe->displayRecipe() as $value){
