@@ -10,12 +10,12 @@ class Crepe
   private int $butter;    // Qantity "gr"
 
   public function __construct(int $sugar, int $flour, int $eggs, int $milk, float $salt, int $butter){
-    $this->setSugar($sugar);
-    $this->setFlour($flour);
-    $this->setEggs($eggs);
-    $this->setMilk($milk);
-    $this->setSalt($salt);
-    $this->setButter($butter);
+    $this->sugar  = $sugar;
+    $this->flour  = $flour;
+    $this->eggs   = $eggs;
+    $this->milk   = $milk;
+    $this->salt   = $salt;
+    $this->butter = $butter;
   }
 
   /**
