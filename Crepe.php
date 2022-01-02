@@ -127,12 +127,12 @@ class Crepe
   public function displayIngredients(): array
   {
     $ingredients = [
-      "1" =>"Sucre: $this->sugar gr",
-     "2" => "Farinee: $this->flour gr",
-      "3" => "Oeufs $this->eggs",
-      "4" => "Lait: $this->milk cl",
-      "5" => " Sel: $this->salt pincée(s)",
-      "6" => "Beurre fondu: $this->butter gr"
+      "1" =>"Sucre: $this->sugar gr,",
+      "2" => "Farine: $this->flour gr,",
+      "3" => "Oeufs: $this->eggs,",
+      "4" => "Lait: $this->milk cl,",
+      "5" => " Sel: $this->salt pincée(s),",
+      "6" => "Beurre fondu: $this->butter gr,"
     ];
 
     return $ingredients;
