@@ -1,5 +1,8 @@
 <?php
  require_once "Crepe.php";
+
+ $newCrepe = new Crepe(2, 250, 4, 50, 1, 50);
+
 ?>
 
 <!DOCTYPE html>
@@ -11,34 +14,40 @@
   <link rel="stylesheet" href="./dist/output.css">
   <title>Faire des crêpes</title>
 </head>
-<body>
-  <h1 class="text-3xl font-bold underline">Recette des meilleures crêpes</h1>
-  <?php
-  $newCrepe = new Crepe(2, 250, 4, 50, 1, 50);
+<body class="bg-amber-100">
+  <div class="mx-auto my-8 p-8 w-3/4 rounded-lg bg-white shadow-md">
 
-  ?>
-  <h2>Liste des ingrédients:</h2>
-  <ul>
-  <?php
-  foreach ($newCrepe->displayIngredients() as $value){
-    ?>
-    <li><?= $value; ?></li>
-    <?php
-  }
-  ?>
-  </ul>
+    <div class="ingredients m-8">
+      <h1 class="text-3xl mb-4 mx-auto w-max font-bold">Recette des meilleures crêpes</h1>
+      <hr>
 
-  <h2>Etapes:</h2>
-  <ul>
-  <?php
-  foreach ($newCrepe->displayRecipe() as $value){
-    ?>
-    <li><?= $value; ?></li>
-    <?php
-  }
-  ?>
-  </ul>
+      <h2 class="text-xl mb-4 font-600">Liste des ingrédients:</h2>
+      <ul>
+      <?php
+      foreach ($newCrepe->displayIngredients() as $value){
+        ?>
+        <li><?= $value; ?></li>
+        <?php
+      }
+      ?>
+      </ul>
+    </div>
 
+    <div class="steps m-8">
+      <h2 class="text-xl mb-4 font-600">Etapes:</h2>
+      <ol class="list-decimal ml-6">
+      <?php
+      foreach ($newCrepe->displayRecipe() as $value){
+        ?>
+        <li><?= $value; ?></li>
+        <?php
+      }
+      ?>
+      </ol>
+    </div>
+
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>

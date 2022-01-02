@@ -2,26 +2,20 @@
 
 class Crepe
 {
-  private int $sugar;  // Qantity "Number of tablespoon"
-  private int $flour;  // Qantity "gr"
-  private int $eggs;  // Qantity "Piece"
-  private int $milk;  // Qantity "cl"
-  private float $salt;  // Qantity "Pinch"
-  private int $butter;  // Qantity "gr"
+  private int $sugar;     // Qantity "Number of tablespoon"
+  private int $flour;     // Qantity "gr"
+  private int $eggs;      // Qantity "Piece"
+  private int $milk;      // Qantity "cl"
+  private float $salt;    // Qantity "Pinch"
+  private int $butter;    // Qantity "gr"
 
   public function __construct(int $sugar, int $flour, int $eggs, int $milk, float $salt, int $butter){
     $this->setSugar($sugar);
-    $this->getSugar();
     $this->setFlour($flour);
-    $this->getFlour();
     $this->setEggs($eggs);
-    $this->getEggs();
     $this->setMilk($milk);
-    $this->getMilk();
     $this->setSalt($salt);
-    $this->getSalt();
     $this->setButter($butter);
-    $this->getButter();
   }
 
   /**
@@ -127,7 +121,7 @@ class Crepe
   public function displayIngredients(): array
   {
     $ingredients = [
-      "1" =>"Sucre: $this->sugar gr,",
+      "1" => "Sucre: $this->sugar gr,",
       "2" => "Farine: $this->flour gr,",
       "3" => "Oeufs: $this->eggs,",
       "4" => "Lait: $this->milk cl,",
