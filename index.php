@@ -1,7 +1,7 @@
 <?php
  require_once "Crepe.php";
 
- $newCrepe = new Crepe(2, 250, 4, 50, 1, 50, ["nutella", "Sucre glace"]);
+ $newCrepe = new Crepe(2, 250, 4, 50, 1, 50, ["nutella", "Sucre glace", "Noix de coco", "vermicelle de sucre"]);
 
 ?>
 

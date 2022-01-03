@@ -23,16 +23,17 @@ class Crepe
     ];
 
     if (!empty($listIngredients)) {
-      $this->hydrate($listIngredients);
+      // $this->hydrate($listIngredients);
+      $this->set($listIngredients);
     }
   }
 
-  private function hydrate(array $listIngredients){
+/*   private function hydrate(array $listIngredients){
     foreach ($listIngredients as $key => $value){
       $setter = 'set' .ucfirst($key);
       $this->$setter($value);
     }
-  }
+  } */
 
   /**
    * For each entry,get value for each attribut
@@ -55,119 +56,129 @@ class Crepe
 
   }
 
-
+  /**
+   * For each entry,get value for each attribut
+   */
+  public function set(array $listIngredients): void
+  {
+    foreach ($listIngredients as $key => $value) {
+      $lcIngredient = strtolower($key);
+      $this->$lcIngredient = $value;
+    }
+  
+  }
 
   /**
    * Return the weight of sugar: int
    */
-  public function getSugar(): int
+/*   public function getSugar(): int
   {
     return $this->sugar;
-  }
+  } */
 
    /**
    * Update the weight of sugar :void
    */
-  public function setSugar($sugar): void
+/*   public function setSugar($sugar): void
   {
     $this->sugar = $sugar;
-  }
+  } */
 
    /**
    * Return the weight of flour :int
    */
-  public function getFlour():int
+ /*  public function getFlour():int
   {
     return $this->flour;
-  }
+  } */
 
   /**
    * Update the weight of flour :void
    */
-  public function setFlour($flour):void
+/*   public function setFlour($flour):void
   {
     $this->flour = $flour;
-  }
+  } */
 
   /**
    * Return the number of eggs :int
    */
-  public function getEggs():int
+/*   public function getEggs():int
   {
     return $this->eggs;
-  }
+  } */
 
   /**
    * Update the numbur of egss :void
    */
-  public function setEggs($egss):void
+/*   public function setEggs($egss):void
   {
     $this->eggs = $egss;
-  }
+  } */
 
   /**
    * Return the quantity of milk :int
    */
-  public function getMilk(): int
+/*   public function getMilk(): int
   {
     return $this->milk;
-  }
+  } */
 
   /**
    * Update the quantity of milk :void
    */
-  private function setMilk($milk): void
+/*   private function setMilk($milk): void
   {
     $this->milk = $milk;
-  }
+  } */
 
   /**
    * Return the weight of salt :float
    */
-  public function getSalt(): float
+/*   public function getSalt(): float
   {
     return $this->salt;
-  }
+  } */
 
   /**
    * Update the weight of salt :void
    */
-  public function setSalt($salt): void
+/*   public function setSalt($salt): void
   {
     $this->salt = $salt;
-  }
+  } */
 
   /**
    * Return the weight of butter :int
    */
-  public function getButter():int
+/*   public function getButter():int
   {
     return $this->butter;
-  }
+  } */
 
   /**
    * Update the weight of butter :void
    */
-  public function setButter($butter):void
+/*   public function setButter($butter):void
   {
     $this->butter = $butter;
-  }
+  } */
 
    /**
    * Return an list additional ingredients :array
    */
-  public function getTopping():array
+/*   public function getTopping():array
   {
     return $this->topping;
-  }
+  } */
 
   /**
    * Update an list additional ingredients :void
    */
-  public function setTopping($topping):void
+/*   public function setTopping($topping):void
   {
     $this->topping = $topping;
-  }
+  } */
 
   /**
    * Retrun list of ingredients : array
@@ -180,11 +191,14 @@ class Crepe
       "3" => "Oeufs: $this->eggs,",
       "4" => "Lait: $this->milk cl,",
       "5" => " Sel: $this->salt pincée(s),",
-      "6" => "Beurre fondu: $this->butter gr,",
-      "7" => "-- Supplément: " .$this->topping[0]. ",",
-      "8" => "-- Supplément: " .$this->topping[1]. ",",
+      "6" => "Beurre fondu: $this->butter gr,"
 
     ];
+
+    foreach ($this->topping as $key =>$value) {
+      $i = $key + 7;
+      $ingredients += [$i => $value];
+    }
 
     return $ingredients;
   }
