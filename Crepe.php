@@ -8,20 +8,59 @@ class Crepe
   private int $milk;      // Qantity "cl"
   private float $salt;    // Qantity "Pinch"
   private int $butter;    // Qantity "gr"
+  private array $topping; // Array contain additionnal ingredients
 
-  public function __construct(int $sugar, int $flour, int $eggs, int $milk, float $salt, int $butter){
-    $this->sugar  = $sugar;
-    $this->flour  = $flour;
-    $this->eggs   = $eggs;
-    $this->milk   = $milk;
-    $this->salt   = $salt;
-    $this->butter = $butter;
+  public function __construct(int $sugar, int $flour, int $eggs, int $milk, float $salt, int $butter, array $topping = []){
+
+    $listIngredients = [
+      "sugar" => $sugar,
+      "flour" => $flour,
+      "eggs" => $eggs,
+      "milk" => $milk,
+      "salt" => $salt,
+      "butter" => $butter,
+      "topping" => $topping
+    ];
+
+    if (!empty($listIngredients)) {
+      $this->hydrate($listIngredients);
+    }
   }
+
+  private function hydrate(array $listIngredients){
+    foreach ($listIngredients as $key => $value){
+      $setter = 'set' .ucfirst($key);
+      $this->$setter($value);
+    }
+  }
+
+  /**
+   * For each entry,get value for each attribut
+   */
+  public function get(string $attributs): string
+  {
+    $newAttributs = strtolower(trim("$attributs", " \n\r\t\v0"));
+    $getAttribut = match($newAttributs){
+      "sugar" => $this->sugar,
+      "flour" => $this->flour,
+      "eggs" => $this->eggs,
+      "milk" => $this->milk,
+      "salt" => $this->salt,
+      "butter" => $this->butter,
+      "topping" => $this->topping,
+      default => NULL
+    };
+    
+    return $getAttribut;
+
+  }
+
+
 
   /**
    * Return the weight of sugar: int
    */
-  private function getSugar(): int
+  public function getSugar(): int
   {
     return $this->sugar;
   }
@@ -29,7 +68,7 @@ class Crepe
    /**
    * Update the weight of sugar :void
    */
-  private function setSugar($sugar): void
+  public function setSugar($sugar): void
   {
     $this->sugar = $sugar;
   }
@@ -37,7 +76,7 @@ class Crepe
    /**
    * Return the weight of flour :int
    */
-  private function getFlour():int
+  public function getFlour():int
   {
     return $this->flour;
   }
@@ -45,7 +84,7 @@ class Crepe
   /**
    * Update the weight of flour :void
    */
-  private function setFlour($flour):void
+  public function setFlour($flour):void
   {
     $this->flour = $flour;
   }
@@ -53,7 +92,7 @@ class Crepe
   /**
    * Return the number of eggs :int
    */
-  private function getEggs():int
+  public function getEggs():int
   {
     return $this->eggs;
   }
@@ -61,7 +100,7 @@ class Crepe
   /**
    * Update the numbur of egss :void
    */
-  private function setEggs($egss):void
+  public function setEggs($egss):void
   {
     $this->eggs = $egss;
   }
@@ -69,7 +108,7 @@ class Crepe
   /**
    * Return the quantity of milk :int
    */
-  private function getMilk(): int
+  public function getMilk(): int
   {
     return $this->milk;
   }
@@ -85,7 +124,7 @@ class Crepe
   /**
    * Return the weight of salt :float
    */
-  private function getSalt(): float
+  public function getSalt(): float
   {
     return $this->salt;
   }
@@ -93,7 +132,7 @@ class Crepe
   /**
    * Update the weight of salt :void
    */
-  private function setSalt($salt): void
+  public function setSalt($salt): void
   {
     $this->salt = $salt;
   }
@@ -101,7 +140,7 @@ class Crepe
   /**
    * Return the weight of butter :int
    */
-  private function getButter():int
+  public function getButter():int
   {
     return $this->butter;
   }
@@ -109,11 +148,26 @@ class Crepe
   /**
    * Update the weight of butter :void
    */
-  private function setButter($butter):void
+  public function setButter($butter):void
   {
     $this->butter = $butter;
   }
 
+   /**
+   * Return an list additional ingredients :array
+   */
+  public function getTopping():array
+  {
+    return $this->topping;
+  }
+
+  /**
+   * Update an list additional ingredients :void
+   */
+  public function setTopping($topping):void
+  {
+    $this->topping = $topping;
+  }
 
   /**
    * Retrun list of ingredients : array
@@ -126,7 +180,10 @@ class Crepe
       "3" => "Oeufs: $this->eggs,",
       "4" => "Lait: $this->milk cl,",
       "5" => " Sel: $this->salt pincée(s),",
-      "6" => "Beurre fondu: $this->butter gr,"
+      "6" => "Beurre fondu: $this->butter gr,",
+      "7" => "-- Supplément: " .$this->topping[0]. ",",
+      "8" => "-- Supplément: " .$this->topping[1]. ",",
+
     ];
 
     return $ingredients;
